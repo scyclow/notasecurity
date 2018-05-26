@@ -4,7 +4,7 @@ contract NotASecurity {
   uint public totalSupply;
 
   uint public decimals = 18;
-  string public symbol = "NOSEC";
+  string public symbol = "NOS";
   string public name = "NotASecurity";
 
   mapping (address => uint) public balanceOf;
