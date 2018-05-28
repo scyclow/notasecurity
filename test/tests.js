@@ -92,35 +92,37 @@ contract('NotASecurity', (accounts) => {
     expect(approval.logs[0].event).to.equal('Approval')
   })
 
-  it.only('should redistribute incoming ethereum according to tokenholder ratios', async () => {
+  async function getGasCost(receipt) {
+    const {gasUsed} = receipt.receipt
+    const tx = await web3.eth.getTransaction(receipt.tx)
+    const {gasPrice} = tx
+    return gasPrice * gasUsed
+  }
+
+  it('should redistribute incoming ethereum according to tokenholder ratios', async () => {
     const aliceEthBalance0 = web3.eth.getBalance(alice)
     const bobEthBalance0 = web3.eth.getBalance(bob)
     const amountToBuy = (await Contract.balanceOf(alice)).times(2)
 
-    const receipt = await Contract.buy({ from: bob, value: amountToBuy })
-    const gasUsed = receipt.receipt.gasUsed;
-    const tx = await web3.eth.getTransaction(receipt.tx);
-    const {gasPrice} = tx;
+    const receipt0 = await Contract.buy({ from: bob, value: amountToBuy })
+    const gasCost0 = await getGasCost(receipt0)
 
-    const gasCost = gasPrice * gasUsed
     const aliceEthBalance1 = web3.eth.getBalance(alice)
     const bobEthBalance1 = web3.eth.getBalance(bob)
     const charlieEthBalance1 = web3.eth.getBalance(charlie)
 
     assert(aliceEthBalance1.equals(aliceEthBalance0.plus(amountToBuy)), '1')
-    assert(bobEthBalance1.equals(bobEthBalance0.minus(amountToBuy).minus(gasCost)), `${bobEthBalance1}, ${bobEthBalance0}, ${amountToBuy}`)
+    assert(bobEthBalance1.equals(bobEthBalance0.minus(amountToBuy).minus(gasCost0)), `${bobEthBalance1}, ${bobEthBalance0}, ${amountToBuy}`)
 
-    await Contract.buy({ from: charlie, value: 3 })
+    const receipt1 = await Contract.buy({ from: charlie, value: 3 })
+    const gasCost1 = await getGasCost(receipt1)
 
     const aliceEthBalance2 = web3.eth.getBalance(alice)
     const bobEthBalance2 = web3.eth.getBalance(bob)
     const charlieEthBalance2 = web3.eth.getBalance(charlie)
 
     assert(aliceEthBalance2.equals(aliceEthBalance1.plus(1)), `${aliceEthBalance2.toNumber()}, ${aliceEthBalance1.plus(1).toNumber()}`)
-    for(let i = 1; i < 11; i++) {
-      console.log(await Contract.benefactors(i))
-    }
     assert(bobEthBalance2.equals(bobEthBalance1.plus(2)), `${bobEthBalance2}, ${bobEthBalance1}`)
-    assert(charlieEthBalance2.equals(charlieEthBalance1.minus(3).minus(gasCost)), '5')
+    assert(charlieEthBalance2.equals(charlieEthBalance1.minus(3).minus(gasCost1)), '5')
   })
 })

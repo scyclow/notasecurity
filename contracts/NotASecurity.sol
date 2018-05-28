@@ -23,7 +23,7 @@ contract NotASecurity {
   constructor() public {
     uint _fee = 10;
     benefactors[1] = msg.sender;
-    lowestBenefactor = 0x0;
+    lowestBenefactor = address(0);
     benefactorMap[msg.sender] = 1;
     balanceOf[msg.sender] = _fee;
     totalSupply = _fee;
@@ -96,7 +96,6 @@ contract NotASecurity {
     return 0;
   }
 
-  event Log(address addr, string str);
   function reorganize(uint _amount, address _investor) public returns (bool) {
     // if investor is already a benefactor
     if (benefactorMap[_investor] > 0) {
@@ -104,20 +103,23 @@ contract NotASecurity {
 
     // if investor is now a top token holder
     } else if (balanceOf[_investor] > balanceOf[lowestBenefactor]) {
+      bool _lowestBenefactorEmpty = lowestBenefactor == address(0);
       uint _oldBalance = balanceOf[lowestBenefactor];
-      uint8 _indexToSwap = benefactorMap[lowestBenefactor];
+      uint8 _indexToSwap = _lowestBenefactorEmpty
+        ? findEmptyBenefactorIndex()
+        : benefactorMap[lowestBenefactor];
 
       // Swap out benefactors
-      benefactorMap[lowestBenefactor] = 0;
+      if (!_lowestBenefactorEmpty) {
+        benefactorMap[lowestBenefactor] = 0;
+      }
       benefactors[_indexToSwap] = _investor;
       benefactorMap[_investor] = _indexToSwap;
-      emit Log(_investor, 'investor');
-      emit Log(lowestBenefactor, 'lowestBenefactor');
       lowestBenefactor = findLowestBenefactor();
-      emit Log(lowestBenefactor, 'new lowestBenefactor');
 
       // Adjust benefactors balance
       benefactorsBalance += (balanceOf[_investor] - _oldBalance);
+
     }
 
     return true;
