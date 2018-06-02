@@ -15,13 +15,13 @@ contract('NotASecurity', (accounts) => {
     const balance = (await Contract.balanceOf(alice))
 
     expect(decimals.toNumber()).to.equal(18)
-    expect(symbol).to.equal('NOS')
+    expect(symbol).to.equal('NOT')
     expect(name).to.equal('NotASecurity')
     assert(totalSupply.equals(balance))
     expect(totalSupply > 0).to.equal(true)
   })
 
-  it('should allow investors to buy NOS', async () => {
+  it('should allow investors to buy NOT', async () => {
     const aliceBalance0 = (await Contract.balanceOf(alice))
     const amountToBuy = 50
     await Contract.buy({ from: alice, value: amountToBuy })
@@ -39,7 +39,7 @@ contract('NotASecurity', (accounts) => {
     assert(bobBalance.equals(amountToBuy))
   });
 
-  it('should allow investors to transfer NOS', async () => {
+  it('should allow investors to transfer NOT', async () => {
     const aliceBalance0 = (await Contract.balanceOf(alice))
     const amountToBuy = 50
     await Contract.buy({ from: alice, value: amountToBuy })

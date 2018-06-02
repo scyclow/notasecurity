@@ -9,35 +9,53 @@ body {
 }
 
 .hero {
-  padding: 2em;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  padding: 30px 20px;
+  padding-bottom: 0;
 }
 
 .hero h1 {
   font-size: 90px;
-  text-align: center;
   /*text-decoration: underline;*/
   text-transform: uppercase;
   line-height: 1.4;
-  display: inline-block;
+  /*display: inline-block;*/
+  text-align: center;
   animation: fadein1 2500ms;
 }
 
 .hero .logo {
-  margin-top: 35px;
+  margin: auto;
+  margin-top: 50px;
   width: 380px;
   animation: fadein2 2875ms;
 }
 
+@media(min-width: 638px) {
+  .header-container {
+    width: 610px;
+    margin: auto;
+  }
+}
+
 @media(max-width: 638px) {
+  .hero {
+    padding: 10px;
+  }
+
   .hero h1 {
     font-size: 60px;
+    text-align: center;
   }
 
   .hero .logo {
-    width: 280px;
+    width: 275px;
+    margin-top: 35px;
+  }
+}
+
+@media(max-width: 405px) {
+  .hero h1 {
+    font-size: 47px;
   }
 }
 
@@ -71,9 +89,24 @@ body {
   text-align: center;
   font-size: 45px;
   margin-top: 50px;
-  padding: 1em 2em;
+  padding: 1em;
   border: 5px solid;
   border-radius: 10px;
+}
+
+@media(max-width: 740px) {
+  .definition {
+    font-size: 30px;
+    border: 4px solid;
+  }
+}
+
+@media(max-width: 464px) {
+  .definition {
+    font-size: 20px;
+    border: 0;
+    padding: 0;
+  }
 }
 
 .content {
@@ -84,4 +117,16 @@ body {
 .rules {
   margin-top: 50px;
   font-size: 45px;
+}
+
+.rules h3 {
+  margin-top: 50px;
+  margin-bottom: 25px;
+}
+.rules li {
+  margin-left: 40px;
+}
+
+.rules p {
+  margin-bottom: 30px;
 }

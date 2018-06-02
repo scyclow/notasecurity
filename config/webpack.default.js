@@ -27,6 +27,7 @@ module.exports = {
   plugins: [
     html({
       template: rootDir(`src/index.html`),
+      favicon: rootDir(`src/favicon.ico`),
       filename: 'index.html',
       inject: 'body',
       chunks: ['index'],
