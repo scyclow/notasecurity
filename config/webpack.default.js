@@ -42,11 +42,11 @@ module.exports = {
         loader: "babel-loader"
       },
       {
-        test: /\.(jpg|png)$/,
+        test: /\.(jpg|png|svg)$/,
         loader: 'file-loader'
       },
       {
-        test: /\.(html|svg)$/,
+        test: /\.(html)$/,
         exclude: /node_modules/,
         loader: 'babel-loader!template-string-loader'
       }

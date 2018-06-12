@@ -8,13 +8,53 @@ body {
   font-family: 'Dosis', sans-serif;
 }
 
+h1 {
+  font-size: 90px;
+}
+
+h2 {
+  font-size: 60px;
+}
+
+.text {
+  font-size: 45px;
+}
+
+@media(max-width: 638px) {
+  h1 {font-size: 60px;}
+
+  h2 {font-size: 40px;}
+
+  .text {font-size: 30px;}
+
+}
+
+@media(max-width: 405px) {
+  h1 {font-size: 47px;}
+
+  h2 {font-size: 30px;}
+
+  .text {font-size: 22px;}
+
+}
+
+ul {
+  list-style-image: url('./bullet.svg')
+}
+
+li {
+  margin-left: 30px;
+  padding-left: 0.3em;
+  padding-bottom: 0.5em;
+}
+
+
 .hero {
   padding: 30px 20px;
   padding-bottom: 0;
 }
 
 .hero h1 {
-  font-size: 90px;
   /*text-decoration: underline;*/
   text-transform: uppercase;
   line-height: 1.4;
@@ -25,7 +65,7 @@ body {
 
 .hero .logo {
   margin: auto;
-  margin-top: 50px;
+  margin-top: 34px;
   width: 380px;
   animation: fadein2 2875ms;
 }
@@ -43,7 +83,6 @@ body {
   }
 
   .hero h1 {
-    font-size: 60px;
     text-align: center;
   }
 
@@ -52,13 +91,6 @@ body {
     margin-top: 35px;
   }
 }
-
-@media(max-width: 405px) {
-  .hero h1 {
-    font-size: 47px;
-  }
-}
-
 
 @keyframes fadein1 {
   from { opacity: 0; }
@@ -114,19 +146,27 @@ body {
   animation: fadein2 3s;
 }
 
-.rules {
+.faqs {
   margin-top: 50px;
-  font-size: 45px;
 }
 
-.rules h3 {
-  margin-top: 50px;
-  margin-bottom: 25px;
-}
-.rules li {
+.faqs li {
   margin-left: 40px;
 }
 
-.rules p {
+.faqs p {
   margin-bottom: 30px;
 }
+
+.description {
+  margin-top: 60px;
+  padding-top: 60px;
+  border-top: 5px dashed;
+}
+
+.description h2 {
+  padding-bottom: 0.3em;
+  text-align: center;
+}
+
+
