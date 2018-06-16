@@ -13,3 +13,17 @@ export default () => {
     </svg>
   `
 }
+
+export const blink = () => {
+  const size = '100%'
+  const color = 'black'
+  return `
+    <svg stroke="${color}" width="${size}" viewBox="0 0 402 353" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M52.8276 267L13.8564 334.5C7.698 345.167 15.396 358.5 27.7128 358.5H386.247C398.564 358.5 406.262 345.167 400.104 334.5L355.936 258M113.449 162L123.842 144C123.842 144 123.842 144 123.842 144L193.124 24C199.282 13.3333 214.678 13.3333 220.836 24L303.975 168" transform="translate(-5.9801 -11)" stroke-width="10"/>
+      <path d="M0 11C133.523 -3.64667 211.176 -3.68665 354 11" transform="translate(376 235) rotate(180)" stroke-width="8"/>
+      <path d="M0 104.511C145.563 -34.4175 226.547 -35.256 370 104.511" transform="translate(13 123.472)" stroke-width="10"/>
+      <path d="M0 101.997C139.557 -33.8136 220.72 -34.1844 370 101.997" transform="translate(383 324.3) rotate(180)" stroke-width="10"/>
+    </svg>
+
+  `
+}
