@@ -14,18 +14,25 @@ $.onClick($.cls('logo'))(() => {
   }
 })
 
+if (!!window.web3) {
+  $($.id('web3-not-detected'), 'display', 'none')
+}
+if (!window.web3) {
+  $($.id('web3-detected'), 'display', 'none')
+}
+
 
 function timedBlink(wait) {
   setTimeout(() => {
     $.sub('logo', blink())
     setTimeout(() => {
       $.sub('logo', logo())
-      timedBlink(random(7000, 20000, true))
+      timedBlink(random(4000, 12000, true))
     }, random(150, 250, true))
   }, wait)
 }
 
-timedBlink(4000)
+timedBlink(3000)
 
 
 

@@ -161,6 +161,11 @@ li {
   margin-bottom: 30px;
 }
 
+.faq-q {
+  color: #300513;
+}
+
+
 .divider {
   background-image: url('./border.svg');
   background-repeat: repeat-x;
@@ -168,9 +173,13 @@ li {
   margin: 60px 0;
 }
 
-.description h2 {
+h2 {
   padding-bottom: 0.3em;
   text-align: center;
+}
+
+.description li {
+  color: #300513;
 }
 
 .cta {
@@ -188,7 +197,7 @@ li {
   transition: 200ms;
   color: black;
   display: inline-block;
-  background-color: #c3d3c3;
+  background-color: #dad6bb;
 }
 
 .cta-button:hover {
@@ -218,3 +227,7 @@ li {
     font-size: 25px;
   }
 }*/
+*::selection {
+  background-color: #000000;
+  color: #99bb99;
+}
