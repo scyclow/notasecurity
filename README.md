@@ -1,3 +1,4 @@
+## Contract development
 `npm i -g truffle`
 `truffle init` (or unbox)
   contracts, migrations, test, truffle.js, truffle-config
@@ -27,3 +28,8 @@ web3
   -> `inst.symbol()`
 
 `truffle test`
+
+## Web Development
+`npm i web3`
+`npm i truffle-contract`
+

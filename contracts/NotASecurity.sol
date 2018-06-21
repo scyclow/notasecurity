@@ -20,8 +20,7 @@ contract NotASecurity {
   event Approval(address indexed _owner, address indexed _spender, uint _value);
   event Transfer(address indexed _from, address indexed _to, uint _value);
 
-  constructor() public {
-    uint _fee = 10;
+  constructor (uint _fee) public {
     benefactors[1] = msg.sender;
     lowestBenefactor = address(0);
     benefactorMap[msg.sender] = 1;

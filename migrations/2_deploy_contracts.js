@@ -3,5 +3,5 @@
 const NotASecurity = artifacts.require('NotASecurity');
 
 module.exports = (deployer) => {
-  deployer.deploy(NotASecurity, { gas: 4700000 });
+  deployer.deploy(NotASecurity, 0, { gas: 4700000 });
 }
