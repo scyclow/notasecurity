@@ -1,7 +1,7 @@
 import 'index.css'
 import $ from './utils/$'
 import logo, { blink } from './logo'
-import { simpleBuy, byOnMew, CONTRACT_ADDRESS } from './web3Setup'
+import { buyOnMEW, CONTRACT_ADDRESS } from './web3Setup'
 
 $.sub('logo', logo())
 $.sub('contract-address', CONTRACT_ADDRESS)
@@ -19,12 +19,13 @@ $.onClick($.cls('logo'))(() => {
 const buyNowButton = $.id('buy-now-button');
 
 $.onClick(buyNowButton)(() => {
-  const amount = Number($.id('buy-now-amount').value);
+  // const amount = Number($.id('buy-now-amount').value);
 
-  if (amount && !!window.web3) {
-    simpleBuy(amount)
-  } else if (amount && !!window.web3) {
-    buyOnMEW(amount)
+  // if (amount && !!window.web3) {
+  //   simpleBuy(amount)
+  // }
+  if (!!window.web3) {
+    buyOnMEW()
   }
 })
 
