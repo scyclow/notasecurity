@@ -23,7 +23,7 @@ $.onClick(buyNowButton)(() => {
 
   if (amount && !!window.web3) {
     simpleBuy(amount)
-  } else if (amount && !window.web3) {
+  } else if (amount && !!window.web3) {
     buyOnMEW(amount)
   }
 })
