@@ -127,6 +127,7 @@ contract('NotASecurity', (accounts) => {
 
     const receipt1 = await Contract.buy({ from: charlie, value: 3 })
     const gasCost1 = await getGasCost(receipt1)
+    console.log(gasCost0, gasCost1)
 
     const aliceEthBalance2 = web3.eth.getBalance(alice)
     const bobEthBalance2 = web3.eth.getBalance(bob)
@@ -163,6 +164,7 @@ contract('NotASecurity', (accounts) => {
     const amountToBuy = 20000
     const kellyReceipt = await Contract.buy({ from: kelly, value: amountToBuy })
     const kellyGasCost = await getGasCost(kellyReceipt)
+    console.log(kellyGasCost)
     const kellyEthBalance1 = web3.eth.getBalance(kelly)
     assert(kellyEthBalance0.minus(kellyGasCost).minus(amountToBuy).equals(kellyEthBalance1))
 

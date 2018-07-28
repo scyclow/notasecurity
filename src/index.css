@@ -20,12 +20,19 @@ h2 {
   font-size: 45px;
 }
 
+.label {
+  text-align: center;
+  font-size: 25px;
+}
+
 @media(max-width: 638px) {
   h1 {font-size: 60px;}
 
   h2 {font-size: 40px;}
 
   .text {font-size: 30px;}
+  .label {font-size: 17;}
+
 
 }
 
@@ -35,6 +42,7 @@ h2 {
   h2 {font-size: 30px;}
 
   .text {font-size: 22px;}
+  .label {font-size: 12px;}
 
 }
 
@@ -141,6 +149,79 @@ li {
     border: 0;
     padding: 0;
     background-color: #99bb99;
+  }
+}
+
+input {
+  font-size: 28px;
+  padding: 10px;
+  border: 2px solid black;
+  border-radius: 5px;
+  font-weight: 300;
+  transition: 200ms;
+  background-color: #d5dfd5;
+  max-width: 70%;
+}
+
+input:active,
+input:focus {
+  background-color: #fff;
+}
+
+.easy-buy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 25px;
+}
+
+#buy-now-button {
+  border: 2px solid;
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 0.8em 1em;
+  font-size: 25px;
+  transition: 200ms;
+  color: black;
+  display: inline-block;
+  background-color: #dad6bb;
+  margin-top: 15px;
+}
+
+#buy-now-button:hover {
+  background-color: #300513;
+  border-color: #300513;
+  color: #99bb99;
+}
+
+#buy-now-button:active {
+  background-color: #000;
+  border-color: #000;
+}
+
+@media(max-width: 440px) {
+  input {
+    font-size: 22px;
+  }
+  #buy-now-button {
+    font-size: 20px;
+  }
+}
+
+.contract-address {
+  text-align: center;
+  word-wrap: break-word;
+}
+
+@media(max-width: 1100px) {
+  .contract-address {
+    font-size: 32px;
+  }
+}
+
+@media(max-width: 770px) {
+  .contract-address {
+    font-size: 22px;
   }
 }
 

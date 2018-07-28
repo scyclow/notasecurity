@@ -22,7 +22,10 @@ module.exports = {
     modules: [
       path.resolve('./src'),
       'node_modules'
-    ]
+    ],
+    alias: {
+      contracts: rootDir('./build/contracts')
+    }
   },
   plugins: [
     html({
