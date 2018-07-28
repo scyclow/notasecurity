@@ -78116,21 +78116,17 @@ _utils_$__WEBPACK_IMPORTED_MODULE_1___default.a.onClick(_utils_$__WEBPACK_IMPORT
   }
 });
 
-if (!window.web3) {
-  _utils_$__WEBPACK_IMPORTED_MODULE_1___default()(_utils_$__WEBPACK_IMPORTED_MODULE_1___default.a.id('web3-detected'), 'display', 'none');
-}
-
 const buyNowButton = _utils_$__WEBPACK_IMPORTED_MODULE_1___default.a.id('buy-now-button');
-if (buyNowButton) {
 
-  _utils_$__WEBPACK_IMPORTED_MODULE_1___default.a.onClick(buyNowButton)(() => {
-    const amount = Number(_utils_$__WEBPACK_IMPORTED_MODULE_1___default.a.id('buy-now-amount').value);
+_utils_$__WEBPACK_IMPORTED_MODULE_1___default.a.onClick(buyNowButton)(() => {
+  const amount = Number(_utils_$__WEBPACK_IMPORTED_MODULE_1___default.a.id('buy-now-amount').value);
 
-    if (amount) {
-      Object(_web3Setup__WEBPACK_IMPORTED_MODULE_3__["simpleBuy"])(amount);
-    }
-  });
-}
+  if (amount && !!window.web3) {
+    Object(_web3Setup__WEBPACK_IMPORTED_MODULE_3__["simpleBuy"])(amount);
+  } else if (amount && !window.web3) {
+    buyOnMEW(amount);
+  }
+});
 
 function timedBlink(wait) {
   setTimeout(() => {
@@ -78361,25 +78357,27 @@ module.exports = $;
 /*!**********************!*\
   !*** ./web3Setup.js ***!
   \**********************/
-/*! exports provided: CONTRACT_ADDRESS, default, simpleBuy */
+/*! exports provided: CONTRACT_ADDRESS, simpleBuy, buyOnMEW */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CONTRACT_ADDRESS", function() { return CONTRACT_ADDRESS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "simpleBuy", function() { return simpleBuy; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "buyOnMEW", function() { return buyOnMEW; });
 /* harmony import */ var web3__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! web3 */ "../node_modules/web3/src/index.js");
 /* harmony import */ var web3__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(web3__WEBPACK_IMPORTED_MODULE_0__);
 
 
 const CONTRACT_ADDRESS = '0x3a49bf3a4e4b8eb1231327839ba504b94e3e4cef';
 
-/* harmony default export */ __webpack_exports__["default"] = (async function web3Setup() {
-  window.web3 = new web3__WEBPACK_IMPORTED_MODULE_0___default.a(window.web3.currentProvider);
-});
+if (window.web3) {
+  try {
+    window.web3 = new web3__WEBPACK_IMPORTED_MODULE_0___default.a(window.web3.currentProvider);
+  } catch (e) {}
+}
 
 async function simpleBuy(amount) {
-  console.log(amount);
   const to = CONTRACT_ADDRESS;
   const _from = await web3.eth.getCoinbase();
 
@@ -78388,6 +78386,10 @@ async function simpleBuy(amount) {
     to,
     from: _from
   });
+}
+
+function buyOnMEW(amount) {
+  window.open(`https://www.myetherwallet.com/?to=${CONTRACT_ADDRESS}&value=${amount}`, '_blank');
 }
 
 /***/ }),
