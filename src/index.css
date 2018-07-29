@@ -179,7 +179,7 @@ input:focus {
 .contract-address {
   text-align: center;
   word-wrap: break-word;
-  margin-bottom: 15px;
+  margin-bottom: 40px;
 }
 
 @media(max-width: 1100px) {
@@ -197,6 +197,15 @@ input:focus {
 .content {
   padding: 0 10%;
   animation: fadein2 3s;
+}
+
+footer {
+  margin-top: 20px;
+  padding: 10px 10%;
+}
+
+footer, footer * {
+  color: #300513;
 }
 
 .faqs {
