@@ -3,12 +3,8 @@ import $ from './utils/$'
 import logo, { blink } from './logo'
 // import { buyOnMEW, CONTRACT_ADDRESS } from './web3Setup'
 
-const CONTRACT_ADDRESS = '0x3a49bf3a4e4b8eb1231327839ba504b94e3e4cef'
-
 
 $.sub('logo', logo())
-$.sub('contract-address', CONTRACT_ADDRESS)
-$.id()
 
 let blinking = false
 $.onClick($.cls('logo'))(() => {

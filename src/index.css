@@ -178,8 +178,15 @@ input:focus {
 
 .contract-address {
   text-align: center;
+  display: block;
   word-wrap: break-word;
   margin-bottom: 40px;
+  text-decoration: none;
+  color: #000;
+}
+
+.contract-address:hover {
+  text-decoration: underline;
 }
 
 @media(max-width: 1100px) {
