@@ -23,7 +23,7 @@ export async function simpleBuy(amount) {
 
 export function buyOnMEW() {
   window.open(
-    `https://www.myetherwallet.com/?to=${CONTRACT_ADDRESS}#send-transaction`,
+    `https://www.myetherwallet.com/?to=0x3a49bf3a4e4b8eb1231327839ba504b94e3e4cef#send-transaction`,
     '_blank'
   )
 }

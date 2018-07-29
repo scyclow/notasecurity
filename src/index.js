@@ -1,10 +1,14 @@
 import 'index.css'
 import $ from './utils/$'
 import logo, { blink } from './logo'
-import { buyOnMEW, CONTRACT_ADDRESS } from './web3Setup'
+// import { buyOnMEW, CONTRACT_ADDRESS } from './web3Setup'
+
+const CONTRACT_ADDRESS = '0x3a49bf3a4e4b8eb1231327839ba504b94e3e4cef'
+
 
 $.sub('logo', logo())
 $.sub('contract-address', CONTRACT_ADDRESS)
+$.id()
 
 let blinking = false
 $.onClick($.cls('logo'))(() => {
@@ -16,18 +20,17 @@ $.onClick($.cls('logo'))(() => {
   }
 })
 
-const buyNowButton = $.id('buy-now-button');
 
-$.onClick(buyNowButton)(() => {
-  // const amount = Number($.id('buy-now-amount').value);
+// $.onClick(buyNowButton)(() => {
+//   // const amount = Number($.id('buy-now-amount').value);
 
-  // if (amount && !!window.web3) {
-  //   simpleBuy(amount)
-  // }
-  if (!!window.web3) {
-    buyOnMEW()
-  }
-})
+//   // if (amount && !!window.web3) {
+//   //   simpleBuy(amount)
+//   // }
+//   if (!!window.web3) {
+//     buyOnMEW()
+//   }
+// })
 
 
 function timedBlink(wait) {
